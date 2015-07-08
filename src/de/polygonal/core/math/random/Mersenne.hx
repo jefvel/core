@@ -56,8 +56,8 @@ class Mersenne extends RNG
 	var _stateVector:de.polygonal.ds.mem.IntMemory;
 	var _kMag01:de.polygonal.ds.mem.IntMemory;
 	#else
-	var _stateVector:Vector<Int>;
-	var _kMag01:Vector<Int>;
+	var _stateVector:Vector<UInt>;
+	var _kMag01:Vector<UInt>;
 	#end
 	
 	var _currentEntry:Int;
@@ -73,14 +73,14 @@ class Mersenne extends RNG
 		#if (flash10 && alchemy)
 		new de.polygonal.ds.mem.IntMemory(kN);
 		#else
-		new Vector<Int>(kN);
+		new Vector<UInt>(kN);
 		#end
 		
 		_kMag01 =
 		#if (flash10 && alchemy)
 		new de.polygonal.ds.mem.IntMemory(2);
 		#else
-		new Vector<Int>(2);
+		new Vector<UInt>(2);
 		#end
 		_kMag01.set(0, 0);
 		_kMag01.set(1, kA);
@@ -183,7 +183,7 @@ class Mersenne extends RNG
 	{
 		if (_currentEntry >= kN)
 		{
-			var temp:Int;
+			var temp:UInt;
 			
 			for (k in 0...kN - kM)
 			{
